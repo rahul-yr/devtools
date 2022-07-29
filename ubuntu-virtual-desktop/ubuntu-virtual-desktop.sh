@@ -11,7 +11,7 @@ sudo apt install --assume-yes wget tasksel
 
 echo "+ Installing Google Chrome Remote Desktop"
 # install chrome remote desktop
-wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
+sudo wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
 sudo apt-get install --assume-yes ./chrome-remote-desktop_current_amd64.deb
 
 echo "+ Installing Ubuntu Desktop Minimal"
