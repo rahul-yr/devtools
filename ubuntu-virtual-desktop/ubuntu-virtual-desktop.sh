@@ -1,23 +1,23 @@
 #!/bin/sh
 
 # Official source for installation
-echo "Official Source : https://ubuntu.com/blog/launch-ubuntu-desktop-on-google-cloud"
+echo "+ Official Source : https://ubuntu.com/blog/launch-ubuntu-desktop-on-google-cloud"
 
 echo "==============================================================="
-echo "Installing dependencies"
+echo "+ Installing dependencies"
 
 sudo apt update
 sudo apt install --assume-yes wget tasksel
 
-echo "Installing Google Chrome Remote Desktop"
+echo "+ Installing Google Chrome Remote Desktop"
 # install chrome remote desktop
 wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
 sudo apt-get install --assume-yes ./chrome-remote-desktop_current_amd64.deb
 
-echo "Installing Ubuntu Desktop Minimal"
+echo "+ Installing Ubuntu Desktop Minimal"
 # install ubuntu desktop minimal GUI
 sudo tasksel install ubuntu-desktop-minimal
-sudo bash -c ‘echo “exec /etc/X11/Xsession /usr/bin/gnome-session” > /etc/chrome-remote-desktop-session’
+sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/gnome-session" > /etc/chrome-remote-desktop-session'
 
 echo "==============================================================="
 echo "Done installing dependencies"
