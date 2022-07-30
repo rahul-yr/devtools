@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 #
 # Startup script to install Chrome remote desktop and a desktop environment.
 #
