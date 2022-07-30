@@ -68,3 +68,6 @@ echo "use the above command to check if chrome remote desktop is running"
 # ==================================================================
 # Helper commands
 # sudo systemctl status chrome-remote-desktop@$USER
+# sudo rm -rf ~/.config/chrome-remote-desktop
+# sudo apt remove -y chrome-remote-desktop && sudo apt purge -y chrome-remote-desktop
+# sudo apt autoremove -y
