@@ -9,7 +9,7 @@
 INSTALL_XFCE=yes
 INSTALL_CINNAMON=no
 INSTALL_CHROME=yes
-INSTALL_FULL_DESKTOP=no
+INSTALL_FULL_DESKTOP=yes
 
 echo "Official source for this script is at:"
 echo "https://cloud.google.com/architecture/chrome-desktop-remote-on-compute-engine#automating_the_installation_process"
