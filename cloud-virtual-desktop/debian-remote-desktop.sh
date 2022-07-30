@@ -5,6 +5,12 @@
 # See environmental variables at then end of the script for configuration
 #
 
+# Configure the following environmental variables as required:
+INSTALL_XFCE=yes
+INSTALL_CINNAMON=no
+INSTALL_CHROME=yes
+INSTALL_FULL_DESKTOP=no
+
 echo "Official source for this script is at:"
 echo "https://cloud.google.com/architecture/chrome-desktop-remote-on-compute-engine#automating_the_installation_process"
 # sudo journalctl -o cat -f _SYSTEMD_UNIT=google-startup-scripts.service
@@ -50,13 +56,6 @@ function is_installed {  # args PACKAGE_NAME
   return $?
 }
 
-function update_user_password {
-    whoami
-    
-    echo -e "$USER_PASSWORD\n$USER_PASSWORD" | passwd $USER
-
-}
-
 function install_custom_packages {
     DEBIAN_FRONTEND=noninteractive apt-get install --assume-yes $CUSTOM_PACKAGES
 
@@ -66,13 +65,6 @@ function install_custom_packages {
     # install vs code
     snap install code --classic
 }
-
-# Configure the following environmental variables as required:
-INSTALL_XFCE=yes
-INSTALL_CINNAMON=no
-INSTALL_CHROME=yes
-INSTALL_FULL_DESKTOP=yes
-USER_PASSWORD="rahuldev"
 
 # Any additional packages that should be installed on startup can be added here
 EXTRA_PACKAGES="less bzip2 zip unzip tasksel wget"
@@ -100,7 +92,5 @@ install_desktop_env
     /tmp/google-chrome-stable_current_amd64.deb
 
 install_custom_packages
-
-update_user_password
 
 echo "Chrome remote desktop installation completed"
