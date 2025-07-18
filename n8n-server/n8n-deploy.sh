@@ -25,10 +25,13 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 if [ "$ACTION" = "create" ]; then
-  # Check ports
-  if lsof -i :80 -sTCP:LISTEN -t >/dev/null || lsof -i :443 -sTCP:LISTEN -t >/dev/null; then
-    echo "⚠️  Ports 80 or 443 are already in use. NGINX and Certbot require these ports."
+  # Check ports: only block if something other than nginx is using 80/443
+  port_blocker=$(lsof -i :80 -sTCP:LISTEN -t | xargs -r ps -o comm= -p | grep -v nginx || true)
+  port_blocker2=$(lsof -i :443 -sTCP:LISTEN -t | xargs -r ps -o comm= -p | grep -v nginx || true)
+  if [ -n "$port_blocker" ] || [ -n "$port_blocker2" ]; then
+    echo "⚠️  Ports 80 or 443 are already in use by another process (not nginx). NGINX and Certbot require these ports."
     echo "    Please free these ports before running this script."
+    lsof -i :80 -i :443
     exit 1
   fi
 
