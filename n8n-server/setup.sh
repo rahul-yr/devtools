@@ -148,6 +148,7 @@ ufw --force enable
 # -------- Done --------
 echo ""
 echo "🎉 n8n is ready at: https://$DOMAIN"
+echo "n8n_encryption_key: $N8N_ENCRYPTION_KEY"
 echo "🔐 Basic Auth: $N8N_BASIC_AUTH_USER / (password hidden)"
 echo "🔁 Docker containers auto-restart enabled"
 echo "📂 Workflows stored in: Docker volume 'n8n_data'"
